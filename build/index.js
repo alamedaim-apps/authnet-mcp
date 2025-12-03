@@ -91,7 +91,7 @@ async function getCustomerProfileTransactionList(customerProfileId) {
     request.setCustomerProfileId(customerProfileId);
     const ctrl = new ApiControllers.GetTransactionListForCustomerController(request.getJSON());
     const response = await executeController(ctrl);
-    const apiResponse = new ApiContracts.GetTransactionListForCustomerResponse(response);
+    const apiResponse = new ApiContracts.GetTransactionListResponse(response);
     if (apiResponse.getMessages().getResultCode() !== ApiContracts.MessageTypeEnum.OK) {
         const errors = apiResponse.getMessages().getMessage();
         throw new Error(`API Error: ${errors[0].getCode()} - ${errors[0].getText()}`);
